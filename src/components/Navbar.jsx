@@ -1,38 +1,77 @@
 import { Link } from "react-router-dom"
 
-function Navbar() {
+function Navbar({ setCartOpen, cart, user, profile, onLogout }) {
+
   return (
-    <nav className="w-full flex flex-col md:flex-row justify-between items-center gap-6 px-6 md:px-10 py-5 bg-black border-b border-purple-900">
+    <nav className="w-full flex justify-between items-center px-6 py-4 bg-black border-b border-purple-900">
 
-      <h1 className="text-3xl font-bold text-purple-500">
-        ICHOOSE
-      </h1>
+      {/* LOGO */}
+      <Link to="/">
+        <h1 className="text-2xl font-bold text-purple-500">
+          ICHOOSE
+        </h1>
+      </Link>
 
-      <ul className="flex flex-wrap justify-center gap-6 text-white">
-
-        <Link to="/">
-          <li className="hover:text-purple-400 transition">
-            Inicio
-          </li>
+      {/* LINKS CENTRO */}
+      <div className="flex gap-6 text-white">
+        <Link to="/" className="hover:text-purple-400">
+          Inicio
         </Link>
 
-        <Link to="/catalogo">
-          <li className="hover:text-purple-400 transition">
-            Catálogo
-          </li>
+        <Link to="/catalogo" className="hover:text-purple-400">
+          Catálogo
         </Link>
 
-        <Link to="/login">
-          <li className="hover:text-purple-400 transition">
-            Login
-          </li>
+        <Link to="/login" className="hover:text-purple-400">
+          Login
         </Link>
+      </div>
 
-      </ul>
+      {/* DERECHA */}
+      <div className="flex items-center gap-4">
 
-      <button className="bg-purple-600 px-5 py-2 rounded-xl hover:bg-purple-700 transition text-white">
-        Login
-      </button>
+        {/* CARRITO */}
+        <button
+          onClick={() => setCartOpen(true)}
+          className="bg-purple-600 text-white px-4 py-2 rounded-xl"
+        >
+          🛒 {cart?.length || 0}
+        </button>
+
+        {/* USUARIO LOGUEADO */}
+        {user ? (
+          <div className="flex items-center gap-3 text-white">
+
+            {/* INFO USUARIO */}
+            <div className="text-right leading-tight">
+              <p className="font-bold">
+                {profile?.nombre || user.email}
+              </p>
+
+              <p className="text-xs text-gray-400">
+                {profile?.cedula || "Usuario"}
+              </p>
+            </div>
+
+            {/* LOGOUT */}
+            <button
+              onClick={onLogout}
+              className="bg-red-500 px-3 py-1 rounded-lg"
+            >
+              Logout
+            </button>
+
+          </div>
+        ) : (
+          <Link
+            to="/login"
+            className="text-white hover:text-purple-400"
+          >
+            Entrar
+          </Link>
+        )}
+
+      </div>
 
     </nav>
   )

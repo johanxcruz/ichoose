@@ -3,31 +3,32 @@ import aretes from "../assets/aretes.png"
 import collar from "../assets/collar.png"
 import medias from "../assets/medias.png"
 
-
 function Catalogo({ addToCart }) {
 
   const products = [
     {
-      title: "Collar Naruto",
+      id: 1,
+      name: "Collar Naruto",
       description: "Diseños inspirados en anime y cultura japonesa.",
-      price: "$35.000",
+      price: 35000,
       image: collar
     },
 
     {
-      title: "Medias Hora de aventura",
+      id: 2,
+      name: "Medias Hora de aventura",
       description: "Personaliza medias con personajes favoritos.",
-      price: "$28.000",
+      price: 28000,
       image: medias
     },
 
     {
-      title: "Aretes Tanjiro Kamado",
-      description: "Accesorios únicos en estilo .",
-      price: "$22.000",
+      id: 3,
+      name: "Aretes Tanjiro Kamado",
+      description: "Accesorios únicos en estilo.",
+      price: 22000,
       image: aretes
-       }
-      
+    }
   ]
 
   return (
@@ -39,10 +40,10 @@ function Catalogo({ addToCart }) {
 
       <div className="flex flex-wrap gap-10 justify-center">
 
-        {products.map((product, index) => (
+        {products.map((product) => (
           <ProductCard
-            key={index}
-            title={product.title}
+            key={product.id}
+            title={product.name}
             description={product.description}
             price={product.price}
             image={product.image}
