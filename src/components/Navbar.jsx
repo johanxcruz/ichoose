@@ -21,6 +21,11 @@ function Navbar({ setCartOpen, cart, user, profile, onLogout }) {
         <Link to="/catalogo" className="hover:text-purple-400">
           Catálogo
         </Link>
+        <Link to="/customizer">
+  <li className="hover:text-purple-400 transition">
+    Personalizar
+  </li>
+</Link>
 
         <Link to="/login" className="hover:text-purple-400">
           Login

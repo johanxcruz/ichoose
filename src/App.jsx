@@ -8,10 +8,12 @@ import Catalogo from "./pages/Catalogo"
 import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import Customizer from "./pages/Customizer"
 
 import { onAuthStateChanged, signOut } from "firebase/auth"
 import { auth, db } from "./firebase/firebase"
 import { doc, getDoc } from "firebase/firestore"
+
 
 function App() {
 
@@ -165,6 +167,10 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route
+  path="/customizer"
+  element={<Customizer />}
+/>
 
         </Routes>
 
